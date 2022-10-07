@@ -24,7 +24,8 @@ COLUMNS = [
     "title",
     "estimate_num",
     "estimate_range",
-    "averaged_estimate"
+    "averaged_estimate",
+    "cost",
 ]
 
 output = subprocess.run(
@@ -114,11 +115,12 @@ with open('issue_estimates.csv', mode='w') as estimates_csv:
             message = f"{url} - {estimate_num} hours "
             "({estimate_num} {estimate_str})"
 
+        cost = averaged_estimate * HOURLY_RATE
         column_values = [globals()[c] for c in COLUMNS]
 
         estimate_writer.writerow(column_values)
         total_hours += averaged_estimate
-        total_cost += averaged_estimate * HOURLY_RATE
+        total_cost += cost
         print(message)
 
 print("\nTotals\n")
