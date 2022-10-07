@@ -4,10 +4,18 @@ import re
 import subprocess
 from collections import UserList
 from decimal import Decimal
+import sys
 
 HOURS_PER_DAY = 6
 HOURLY_RATE = 50
 CURRENCY = "£"
+
+label_params = []
+sys.argv.pop(0)
+if len(sys.argv):
+    for label in sys.argv:
+        label_params.append("--label")
+        label_params.append(label)
 
 # Variables to output into csv rows
 COLUMNS = [
@@ -25,8 +33,8 @@ output = subprocess.run(
         "issue",
         "list",
         "--state", "open",
+        *label_params,
         # "--label", "some label",
-        # "--label", "estimated",
         "--json", "number,title,state,url,labels,body"
     ],
     capture_output=True

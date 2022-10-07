@@ -14,7 +14,7 @@ Install github cli.
 https://cli.github.com/
 
 Run the python script from shell whilst in the relevant project folder, or add
-the folder for this repo to PATH.
+it to PATH.
 
 ## Issue Estimates
 
@@ -30,6 +30,8 @@ form (emoji used for disambiguation):
 Converts days to hours, accepts ranges for both.
 
 Summarises the estimates and outputs a CSV.
+
+Accepts issue labels as arguments.
 
 Suggested uses:
 
